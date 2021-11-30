@@ -1,0 +1,21 @@
+# vim as default
+export EDITOR="vim"
+
+# Prefer US English and use UTF-8
+export LC_ALL="en_US.UTF-8"
+export LANG="en_US"
+
+# here's LS_COLORS
+# github.com/trapd00r/LS_COLORS
+command -v gdircolors >/dev/null 2>&1 || alias gdircolors="dircolors"
+eval "$(gdircolors -b ~/.dircolors)"
+
+# Larger bash history (allow 323 entries; default is 500)
+export HISTSIZE=50000000;
+export HISTFILESIZE=$HISTSIZE;
+export HISTCONTROL=ignoredups;
+export HISTTIMEFORMAT='%F %T '
+# Make some commands not show up in history
+export HISTIGNORE=" *:ls:cd:cd -:pwd:exit:date:* --help:* -h:pony:pony add *:pony update *:pony save *:pony ls:pony ls *";
+# After each command, append to the history file and reread it
+export PROMPT_COMMAND="${PROMPT_COMMAND:+$PROMPT_COMMAND$"\n"}history -a; history -c; history -r"
